@@ -33,6 +33,7 @@ $produto = $result->fetch_assoc();
   <link rel="stylesheet" href="../css/form.css">
 </head>
 <body class="<?php echo (isset($_COOKIE['modo']) && $_COOKIE['modo'] === 'dark') ? 'dark-mode' : ''; ?>">
+  <?php include '../includes/menuadm.php'; ?>
 
   <h1>Edição de Produto</h1>
 
