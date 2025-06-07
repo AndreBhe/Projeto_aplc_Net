@@ -14,6 +14,7 @@ $result = $conn->query($sql);
 </head>
 <body class="container py-4">
   <h1 class="mb-4">Lista de Novidades</h1>
+  <?php include '../includes/menuadm.php'; ?>
 
   <a href="create.php" class="btn btn-success mb-3">+ Adicionar Novidade</a>
 
