@@ -18,10 +18,8 @@
           <a class="nav-link text-white" href="../novidades/index.php" style="font-size: 1.1rem; margin: 0 15px;">Novidades</a>
         </li>
       </ul>
-      <button class="btn btn-sm btn-secondary ms-2" id="toggle-dark">🌙 Modo Noturno</button>
+      <button class="btn btn-secondary nav-dark-mode-btn" id="toggle-dark">🌙 Modo Noturno</button>
       <a class="nav-link text-white" href="../logout.php" style="font-size: 1.1rem; margin: 0 15px;">Logout</a>
     </div>
   </div>
 </nav>
-
-<br><br><br>
