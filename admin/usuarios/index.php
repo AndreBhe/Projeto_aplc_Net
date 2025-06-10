@@ -1,59 +1,77 @@
-<?php 
+<?php
 session_start();
 if (!isset($_SESSION['admin'])) {
     header("Location: ../login.php");
     exit;
 }
 
-include '../conexao.php'; 
+include '../conexao.php';
 $usuario = $_SESSION['admin'];
+
+$modo_atual = isset($_COOKIE['modo']) ? $_COOKIE['modo'] : 'light';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Lista de Usuários</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../estilos.css"> 
+    <meta charset="UTF-8">
+    <title>Lista de Usuários</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/estiloadm.css" rel="stylesheet">
 </head>
-<body>
+<body class="<?php echo ($modo_atual === 'dark') ? 'dark-mode' : ''; ?>">
 
-  <?php include '../includes/menuadm.php'; ?>
+    <?php include '../includes/menuadm.php'; ?>
+<br><br>
+    <h1 class="text-center mt-5 mb-4">Gerenciar Usuários</h1>
 
-  <div class="container py-4">
-    <h2 class="mb-4">Usuários Cadastrados</h2>
+    <div class="d-flex justify-content-center mb-4">
+        <a href="create.php" class="btn btn-success">Novo Usuário</a>
+    </div>
 
-    <a href="create.php" class="btn btn-success mb-3 ms-2">Novo Usuário</a>
-
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th><th>Nome</th><th>Endereco</th><th>Telefone</th><th>Email</th><th>Sexo</th><th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="user-cards-grid-container">
         <?php
         $sql = "SELECT * FROM usuarios";
         $res = $conn->query($sql);
-        while ($row = $res->fetch_assoc()): ?>
-          <tr>
-            <td><?= $row['id'] ?></td>
-            <td><?= $row['nome'] ?></td>
-            <td><?= $row['endereco'] ?></td>
-            <td><?= $row['telefone'] ?></td>
-            <td><?= $row['email'] ?></td>
-            <td><?= $row['sexo'] ?></td>
-            <td>
-              <a href="read.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm">Ver</a>
-              <a href="update.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-              <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</a>
-            </td>
-          </tr>
-        <?php endwhile; ?>
-      </tbody>
-    </table>
-  </div>
 
+        if ($res->num_rows > 0):
+            while ($row = $res->fetch_assoc()):
+                $completed_fields = 0;
+                if (!empty($row['nome'])) $completed_fields++;
+                if (!empty($row['endereco'])) $completed_fields++;
+                if (!empty($row['telefone'])) $completed_fields++;
+                if (!empty($row['email'])) $completed_fields++;
+                if (!empty($row['sexo'])) $completed_fields++;
+                
+                $total_fields = 5;
+                $profile_percentage = ($total_fields > 0) ? round(($completed_fields / $total_fields) * 100) : 0;
+        ?>
+                <div class="user-item-card">
+                    <h2 class="user-name"><?= htmlspecialchars($row['nome']) ?></h2>
+                    
+                    <p><strong>ID:</strong> <?= htmlspecialchars($row['id']) ?></p>
+                    <p><strong>Endereço:</strong> <?= htmlspecialchars($row['endereco']) ?></p>
+                    <p><strong>Telefone:</strong> <?= htmlspecialchars($row['telefone']) ?></p>
+                    <p><strong>Email:</strong> <?= htmlspecialchars($row['email']) ?></p>
+                    <p><strong>Sexo:</strong> <?= htmlspecialchars($row['sexo']) ?></p>
+
+                    
+
+                    <div class="actions">
+                        <a href="read.php?id=<?= htmlspecialchars($row['id']) ?>" class="btn btn-info">Ver</a>
+                        <a href="update.php?id=<?= htmlspecialchars($row['id']) ?>" class="btn btn-warning">Editar</a>
+                        <a href="delete.php?id=<?= htmlspecialchars($row['id']) ?>" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Excluir</a>
+                    </div>
+                </div>
+        <?php
+            endwhile;
+        else:
+        ?>
+            <p class="text-center w-100">Nenhum usuário cadastrado.</p>
+        <?php endif; ?>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

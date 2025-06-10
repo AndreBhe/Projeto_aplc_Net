@@ -79,3 +79,31 @@ button:hover {
   text-align: center;
   margin-top: 10px;
 }
+
+.dark-mode .list-group-item {
+    background-color: #2c2c2c; /* Cor de fundo para itens da lista no modo escuro */
+    color: #f0f0f0; /* Cor do texto para itens da lista no modo escuro */
+    border-color: #444; /* Cor da borda para itens da lista no modo escuro */
+}
+
+.dark-mode .alert-warning {
+    background-color: #4a3a00; /* Um amarelo mais escuro para o alerta de aviso */
+    color: #ffd700; /* Texto mais claro para o alerta de aviso */
+    border-color: #6a5a00;
+}
+
+.dark-mode .btn-secondary {
+    background-color: #444; /* Fundo do botão secundário no modo escuro */
+    color: #f0f0f0; /* Texto do botão secundário no modo escuro */
+    border-color: #555;
+}
+
+.dark-mode .btn-secondary:hover {
+    background-color: #555; /* Fundo do botão secundário ao passar o mouse no modo escuro */
+    border-color: #666;
+}
+
+/* Você também pode precisar ajustar o H1 se ele não estiver pegando a cor do body */
+.dark-mode h1 {
+    color: #f0f0f0;
+}
