@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: php-apache
+    ports:
+      - '8080:80'
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: empresa
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./SQL/BancoDeDados.sql:/docker-entrypoint-initdb.d/BancoDeDados.sql
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge 
