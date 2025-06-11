@@ -1,109 +1,162 @@
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
 }
 
 .dark-mode {
-  background-color: #121212;
-  color: #f0f0f0;
+    background-color: #121212;
+    color: #f0f0f0;
 }
 
 h1, h2 {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
 
+/* Aumentando a especificidade para h1, h2 */
+.dark-mode h1,
+.dark-mode h2 {
+    color: #f0f0f0 !important; /* Usando !important para forçar a cor */
+}
+
+/* Remova ou ajuste .form-container se ele não for mais um wrapper externo */
+/* Para a página de detalhes, o container do Bootstrap já serve */
+/*
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    flex-grow: 1;
 }
+*/
 
+/* No caso da página de detalhes, a classe .container já está no div principal */
+/* Ajustar o .container para que ele fique centralizado no body (se não estiver já) */
 .container {
-  max-width: 500px;
-  width: 100%;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  padding: 30px;
+    max-width: 500px; /* Largura máxima do container */
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-left: auto; /* Centraliza o container */
+    margin-right: auto; /* Centraliza o container */
 }
 
 .dark-mode .container {
-  background: #1e1e1e;
+    background: #1e1e1e;
+    color: #f0f0f0;
 }
 
 .form-title {
-  text-align: center;
-  font-weight: 600;
-  font-size: 24px;
-  margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 25px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
 }
 
 .form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select,
+.dark-mode .form-group textarea {
+    background-color: #333;
+    color: #f0f0f0;
+    border-color: #555;
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .error {
-  color: red;
-  text-align: center;
-  margin-top: 10px;
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Estilos Específicos para Componentes Bootstrap no Modo Escuro */
+
+.dark-mode .list-group {
+    border-color: #444;
 }
 
 .dark-mode .list-group-item {
-    background-color: #2c2c2c; /* Cor de fundo para itens da lista no modo escuro */
-    color: #f0f0f0; /* Cor do texto para itens da lista no modo escuro */
-    border-color: #444; /* Cor da borda para itens da lista no modo escuro */
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+    border-color: #444;
+}
+
+.dark-mode .alert {
+    border-color: #6a5a00;
 }
 
 .dark-mode .alert-warning {
-    background-color: #4a3a00; /* Um amarelo mais escuro para o alerta de aviso */
-    color: #ffd700; /* Texto mais claro para o alerta de aviso */
+    background-color: #4a3a00;
+    color: #ffd700;
     border-color: #6a5a00;
 }
 
 .dark-mode .btn-secondary {
-    background-color: #444; /* Fundo do botão secundário no modo escuro */
-    color: #f0f0f0; /* Texto do botão secundário no modo escuro */
+    background-color: #444;
+    color: #f0f0f0;
     border-color: #555;
 }
 
 .dark-mode .btn-secondary:hover {
-    background-color: #555; /* Fundo do botão secundário ao passar o mouse no modo escuro */
+    background-color: #555;
     border-color: #666;
 }
 
-/* Você também pode precisar ajustar o H1 se ele não estiver pegando a cor do body */
-.dark-mode h1 {
-    color: #f0f0f0;
+/* Opcional: Se o seu menuadm.php for um navbar do Bootstrap, adicione estas regras */
+/*
+.dark-mode .navbar {
+    background-color: #2a2a2a !important;
+    border-bottom: 1px solid #444;
 }
+
+.dark-mode .navbar-brand,
+.dark-mode .navbar-nav .nav-link {
+    color: #f0f0f0 !important;
+}
+
+.dark-mode .navbar-nav .nav-link:hover {
+    color: #ddd !important;
+}
+*/

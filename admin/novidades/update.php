@@ -40,25 +40,34 @@ if (!$novidade) {
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editar Novidade</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css/form.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial=1.0">
+    <title>Editar Novidade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/form.css">
 </head>
-<body class="container py-4">
-  <h1 class="mb-4">Editar Novidade</h1>
-  <form method="POST">
-    <div class="mb-3">
-      <label class="form-label">Título</label>
-      <input type="text" name="titulo" class="form-control" value="<?= htmlspecialchars($novidade['titulo']) ?>" required>
+<body class="<?php echo (isset($_COOKIE['modo']) && $_COOKIE['modo'] === 'dark') ? 'dark-mode' : ''; ?>">
+    <?php include '../includes/menuadm.php'; ?>
+<br><br><br><br>
+    <h1>Edição de Novidade</h1>
+<br>
+    <div class="form-container">
+        <div class="container">
+            <h2 class="form-title">Editar Novidade</h2>
+            <form method="POST" class="form">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" value="<?= htmlspecialchars($novidade['titulo']) ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="conteudo">Conteúdo:</label>
+                    <textarea id="conteudo" name="conteudo" rows="5" required><?= htmlspecialchars($novidade['conteudo']) ?></textarea>
+                </div>
+                <button type="submit">Atualizar</button>
+                <a href="index.php" class="btn btn-secondary mt-2 w-100">Cancelar</a>
+            </form>
+        </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Conteúdo</label>
-      <textarea name="conteudo" class="form-control" rows="5" required><?= htmlspecialchars($novidade['conteudo']) ?></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Atualizar</button>
-    <a href="index.php" class="btn btn-secondary">Cancelar</a>
-  </form>
 </body>
 </html>
