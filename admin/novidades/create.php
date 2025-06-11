@@ -4,7 +4,7 @@ include '../conexao.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $titulo = $_POST['titulo'];
   $conteudo = $_POST['conteudo'];
-  $data_postagem = date('Y-m-d H:i:s'); // Pega a data e hora atual do sistema
+  $data_postagem = date('Y-m-d H:i:s');
 
   $stmt = $conn->prepare("INSERT INTO novidades (titulo, conteudo, data) VALUES (?, ?, ?)");
   $stmt->bind_param("sss", $titulo, $conteudo, $data_postagem);

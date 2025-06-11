@@ -18,7 +18,7 @@ $usuario = $_SESSION['admin'];
     <link rel="stylesheet" href="../css/form.css"> </head>
 <body class="<?php echo (isset($_COOKIE['modo']) && $_COOKIE['modo'] === 'dark') ? 'dark-mode' : ''; ?>">
     <?php include '../includes/menuadm.php'; ?>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
     <div class="welcome container py-4">
         <h2>Bem-vindo, <?php echo htmlspecialchars($usuario); ?>!</h2>
         <p>O que você deseja gerenciar?</p>

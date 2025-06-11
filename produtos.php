@@ -17,11 +17,11 @@
     <h2>Produtos</h2>
     <div class="row">
       <?php
-      // Consulta para selecionar todos os produtos
+      
       $sql = "SELECT * FROM produtos";
       $res = $conn->query($sql);
       
-      // Verifica se a consulta foi bem-sucedida e exibe os produtos
+      
       if ($res) {
           while ($row = $res->fetch_assoc()) {
               echo "<div class='col-md-4 mb-3'>

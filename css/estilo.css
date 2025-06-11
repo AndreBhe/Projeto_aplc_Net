@@ -11,25 +11,25 @@ body {
     flex-direction: column;
 }
 
-/* Títulos */
+
 h1, h2 {
     color: #003366;
 }
 
-/* Cartões */
+
 .card {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.164);
 }
 
-/* Seção de abertura */
+
 .abertura {
     padding: 50px;
     background-color: #003366;
     color: rgb(0, 0, 0);
 }
 
-/* Seções de texto */
+
 .text-section {
     padding: 50px;
     background-color: #383838ab;
@@ -41,9 +41,9 @@ h1, h2 {
     color: rgb(0, 0, 0);
 }
 
-/* Footer */
+
 .Footer.Contato {
-    background-color: #190972; 
+    background-color: #000000; 
     padding: 20px 0; 
     text-align: center; 
     color: rgb(255, 255, 255); 
@@ -73,9 +73,7 @@ h1, h2 {
     color: white;
 }
 
-/* ===================== */
-/*       MODO ESCURO     */
-/* ===================== */
+
 body.dark-mode {
     background-color: #1a1a1a;
     color: #ffffff;
@@ -93,7 +91,7 @@ body.dark-mode {
 }
 
 .dark-mode .Footer.Contato {
-    background-color: #0d0d3a;
+    background-color: #000000;
     color: white;
 }
 

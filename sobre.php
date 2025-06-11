@@ -20,37 +20,31 @@
     </section>
     
 
-      <!-- Linha com texto à esquerda e imagem à direita -->
+     
       <div class="row align-items-center">
-        <!-- Texto principal -->
+        
         <div class="col-md-7">
-          <p>Fundada em 2023 por quatro grandes amigos — <strong>Leo, Alessandra, João e André</strong> — a <strong>Cervejaria Mont Serrat</strong> nasceu de um sonho compartilhado: unir amizade, natureza e excelência na arte cervejeira.</p>
+          <p>Fundada em 2023 por quatro grandes amigos — <strong>Leo, Alessandra, João e André</strong> — a <strong>Cervejaria Brew Lab</strong> nasceu de um sonho compartilhado: unir amizade, natureza e excelência na arte cervejeira.</p>
 
           <p>Localizada em meio às paisagens deslumbrantes da região serrana do estado do Rio de Janeiro, a cervejaria encontrou seu lar em um ambiente onde a brisa fresca da montanha se mistura ao aroma dos lúpulos e maltes importados diretamente da Bélgica.</p>
 
           <p>Toda a água utilizada na produção vem de nascentes cristalinas que descem direto das montanhas — águas puras, geladas e minerais, que dão às nossas cervejas uma identidade única.</p>
         </div>
 
-        <!-- Imagem à direita -->
+        
         <div class="col-md-5 text-center">
           <img src="img/imgcerv.jpg" alt="Imagem da Cervejaria" class="img-fluid rounded shadow-sm mb-2">
           <small class="text-muted d-block">Vista da nossa unidade na serra</small>
         </div>
       </div>
 
-      <!-- Texto complementar abaixo da imagem -->
+      
       <div class="mt-4">
         <p>Nosso foco principal é a produção de <strong>cervejas de estilo belga</strong>, com receitas autênticas e cuidadosas, inspiradas nas tradições centenárias das abadias europeias. Cada gole carrega uma experiência sensorial rica, com corpo marcante, aromas frutados e final suave.</p>
 
         <p>Aqui, tradição e inovação andam lado a lado, em um ambiente onde cada detalhe importa — desde a escolha dos ingredientes até o rótulo da garrafa.</p>
 
-        <!-- Espaço opcional para imagem dos fundadores -->
-        <!--
-        <div class="text-center mt-4">
-          <img src="img/fundadores.jpg" alt="Os quatro fundadores" class="img-fluid rounded shadow-sm">
-          <small class="text-muted d-block mt-2">Leo, Alessandra, João e André — os idealizadores da Mont Serrat</small>
-        </div>
-        -->
+       
       </div>
     </div>
   </main>

@@ -1,5 +1,5 @@
 <?php
-session_start(); // Adicione session_start() se essa página também requer autenticação ou usa o cookie de modo.
+session_start();
 if (!isset($_SESSION['admin'])) {
     header("Location: ../login.php");
     exit;
@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin'])) {
 
 include '../conexao.php';
 
-// Verifica se o modo está no cookie (necessário para o modo noturno funcionar)
+
 $modo_atual = isset($_COOKIE['modo']) ? $_COOKIE['modo'] : 'light';
 
 $sql = "SELECT id, nome, descricao, preco FROM produtos";

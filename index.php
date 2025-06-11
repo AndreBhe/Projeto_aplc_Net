@@ -28,7 +28,7 @@
           <p>Somos uma empresa dedicada a oferecer os melhores produtos e serviços aos nossos clientes. Com uma equipe especializada e apaixonada pelo que faz, buscamos sempre a excelência em cada projeto.</p>
         </div>
         <div class="col-md-6">
-          <!-- Imagem ou conteúdo complementar opcional -->
+   
         </div>
       </div>
     </section>
