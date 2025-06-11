@@ -144,19 +144,3 @@ button:hover {
     border-color: #666;
 }
 
-/* Opcional: Se o seu menuadm.php for um navbar do Bootstrap, adicione estas regras */
-/*
-.dark-mode .navbar {
-    background-color: #2a2a2a !important;
-    border-bottom: 1px solid #444;
-}
-
-.dark-mode .navbar-brand,
-.dark-mode .navbar-nav .nav-link {
-    color: #f0f0f0 !important;
-}
-
-.dark-mode .navbar-nav .nav-link:hover {
-    color: #ddd !important;
-}
-*/
