@@ -22,5 +22,15 @@ include '../includes/verificar_sessao.php';
         <p>O que você deseja gerenciar?</p>
     </div>
 
+
+    <script>
+    window.addEventListener('pageshow', function(event) {
+        // A propriedade 'persisted' é true se a página foi carregada do bfcache
+        if (event.persisted) {
+            // Força um recarregamento completo da página a partir do servidor.
+            window.location.reload();
+        }
+    });
+    </script>
     </body>
 </html>

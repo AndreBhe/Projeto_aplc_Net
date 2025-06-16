@@ -1,18 +1,22 @@
 <?php
 session_start();
 
-// ---> INÍCIO DA MODIFICAÇÃO DE SEGURANÇA
+// ---> INÍCIO DA MODIFICAÇÃO
+// Adiciona os cabeçalhos para instruir o navegador a NUNCA usar o cache para esta página.
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+// ---> FIM DA MODIFICAÇÃO
+
 // Se o usuário já estiver logado e acessar esta página, destrói a sessão por segurança.
 if (isset($_SESSION['admin'])) {
-    session_unset();    // Libera todas as variáveis de sessão
-    session_destroy();  // Destrói a sessão
-    // Redireciona para a própria página com uma mensagem para o usuário
+    session_unset();
+    session_destroy();
     header("Location: login.php?security_logout=1");
     exit;
 }
-// ---> FIM DA MODIFICAÇÃO DE SEGURANÇA
 
-include 'conexao.php';
+include 'conexao.php';;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];
