@@ -1,11 +1,9 @@
 <?php
-session_start(); // Adicione session_start() se essa página também requer autenticação ou usa o cookie de modo.
-if (!isset($_SESSION['admin'])) {
-    header("Location: ../login.php");
-    exit;
-}
+include '../includes/verificar_sessao.php';
+
 
 include '../conexao.php';
+
 
 // Verifica se o modo está no cookie (necessário para o modo noturno funcionar)
 $modo_atual = isset($_COOKIE['modo']) ? $_COOKIE['modo'] : 'light';
@@ -27,6 +25,7 @@ $result = $conn->query($sql);
 <body class="<?php echo ($modo_atual === 'dark') ? 'dark-mode' : ''; ?>">
 
     <?php include '../includes/menuadm.php'; ?>
+    
 <br><br>
     <h1 class="text-center mt-5 mb-4">Gerenciar Novidades</h1>
 

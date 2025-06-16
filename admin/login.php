@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+// ---> INÍCIO DA MODIFICAÇÃO DE SEGURANÇA
+// Se o usuário já estiver logado e acessar esta página, destrói a sessão por segurança.
+if (isset($_SESSION['admin'])) {
+    session_unset();    // Libera todas as variáveis de sessão
+    session_destroy();  // Destrói a sessão
+    // Redireciona para a própria página com uma mensagem para o usuário
+    header("Location: login.php?security_logout=1");
+    exit;
+}
+// ---> FIM DA MODIFICAÇÃO DE SEGURANÇA
+
 include 'conexao.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -37,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br><br><br>
 <h1><strong>PORTAL DO ADMINISTRADOR</strong></h1>
 
-
 <div class="form-container">
   <div class="container">
     <h2 class="form-title">LOGIN</h2>
@@ -53,16 +64,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
 
       <div class="d-flex gap-3 mt-3">
-  <button type="submit">LOGIN</button>
-  <button class="btn-custom" onclick="location.href='../index.php'" type="button">VOLTAR</button>
-</div>
+        <button type="submit">LOGIN</button>
+        <button class="btn-custom" onclick="location.href='logout.php'" type="button">VOLTAR</button>
+      </div>
 
-<div class="mt-4 text-center">
-  <button type="button" class="btn btn-sm btn-secondary" id="toggle-dark">🌙 Modo Noturno</button>
-</div>
+      <div class="mt-4 text-center">
+        <button type="button" class="btn btn-sm btn-secondary" id="toggle-dark">🌙 Modo Noturno</button>
+      </div>
     </form>
 
-    <?php if (isset($erro)) echo "<p class='error mt-3'>$erro</p>"; ?>
+    <?php
+    if (isset($erro)) {
+        echo "<p class='error mt-3'>$erro</p>";
+    } elseif (isset($_GET['timeout']) && $_GET['timeout'] == 1) {
+        echo "<p class='error mt-3'>Sessão expirada por inatividade. Faça login novamente.</p>";
+    // ---> INÍCIO DA MENSAGEM PARA O USUÁRIO
+    } elseif (isset($_GET['security_logout']) && $_GET['security_logout'] == 1) {
+        echo "<p class='error mt-3'>Por segurança, sua sessão foi encerrada. Faça o login novamente.</p>";
+    }
+    // ---> FIM DA MENSAGEM PARA O USUÁRIO
+    ?>
   </div>
 </div>
 
@@ -72,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     const toggle = document.getElementById('toggle-dark');
     const body = document.body;
 
+    // Use localStorage para persistir o modo escuro, o cookie é um fallback
     if (localStorage.getItem('modo') === 'dark') {
       body.classList.add('dark-mode');
       document.cookie = "modo=dark; path=/";

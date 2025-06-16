@@ -1,4 +1,5 @@
 <?php
+include '../includes/verificar_sessao.php';
 include '../conexao.php';
 
 $id = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : 0;

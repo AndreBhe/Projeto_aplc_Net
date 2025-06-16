@@ -1,5 +1,5 @@
 <?php
-
+include '../includes/verificar_sessao.php';
 include '../conexao.php';
 
     $id = $_GET['id'];
