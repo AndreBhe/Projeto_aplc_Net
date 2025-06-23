@@ -1,7 +1,5 @@
 <?php
 include '../includes/verificar_sessao.php';
-
-
 include '../conexao.php';
 
 
@@ -54,6 +52,33 @@ $result = $conn->query($sql);
         <?php endif; ?>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('toggle-dark');
+    const body = document.body;
+
+    
+    if (localStorage.getItem('modo') === 'dark') {
+        body.classList.add('dark-mode');
+    }
+
+    
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            
+            body.classList.toggle('dark-mode');
+            
+            
+            const modo = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            
+            
+            localStorage.setItem('modo', modo);
+            
+            
+            document.cookie = "modo=" + modo + "; path=/; SameSite=Lax";
+        });
+    }
+});
+</script>
 </body>
 </html>

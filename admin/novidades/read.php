@@ -45,5 +45,34 @@ if ($res && $res->num_rows > 0) {
 
         <a href="index.php" class="btn btn-secondary mt-3">Voltar</a>
     </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('toggle-dark');
+    const body = document.body;
+
+    
+    if (localStorage.getItem('modo') === 'dark') {
+        body.classList.add('dark-mode');
+    }
+
+    
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            
+            body.classList.toggle('dark-mode');
+            
+            
+            const modo = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            
+            
+            localStorage.setItem('modo', modo);
+            
+            
+            document.cookie = "modo=" + modo + "; path=/; SameSite=Lax";
+        });
+    }
+});
+</script>
 </body>
 </html>

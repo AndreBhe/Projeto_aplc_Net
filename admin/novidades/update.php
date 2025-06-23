@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Buscar dados existentes
+
 $sql = "SELECT * FROM novidades WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
@@ -70,5 +70,34 @@ if (!$novidade) {
             </form>
         </div>
     </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('toggle-dark');
+    const body = document.body;
+
+    
+    if (localStorage.getItem('modo') === 'dark') {
+        body.classList.add('dark-mode');
+    }
+
+    
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            
+            body.classList.toggle('dark-mode');
+            
+            
+            const modo = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            
+            
+            localStorage.setItem('modo', modo);
+            
+            
+            document.cookie = "modo=" + modo + "; path=/; SameSite=Lax";
+        });
+    }
+});
+</script>
 </body>
 </html>

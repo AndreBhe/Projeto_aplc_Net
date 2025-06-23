@@ -9,9 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
     $sexo = $_POST['sexo'];
+    $endereco = $_POST['endereco']; // Adicionado: você tem um campo de endereço no formulário, mas não no bind_param
 
-    $stmt = $conn->prepare("UPDATE usuarios SET nome=?, email=?, telefone=?, sexo=? WHERE id=?");
-    $stmt->bind_param("ssssi", $nome, $email, $telefone, $sexo, $id);
+    // O bind_param precisa incluir 'endereco' se você o estiver atualizando
+    // Certifique-se de que o campo 'endereco' existe na sua tabela 'usuarios'
+    $stmt = $conn->prepare("UPDATE usuarios SET nome=?, email=?, telefone=?, sexo=?, endereco=? WHERE id=?");
+    $stmt->bind_param("sssssi", $nome, $email, $telefone, $sexo, $endereco, $id); // Adicionado 's' para string de 'endereco'
     $stmt->execute();
 
     header("Location: index.php");
@@ -31,7 +34,7 @@ $usuario = $res->fetch_assoc();
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/form.css">
-</head>
+    </head>
 <body class="<?php echo (isset($_COOKIE['modo']) && $_COOKIE['modo'] === 'dark') ? 'dark-mode' : ''; ?>">
     <?php include '../includes/menuadm.php'; ?>
 <br><br><br><br>
@@ -69,5 +72,34 @@ $usuario = $res->fetch_assoc();
             </form>
         </div>
     </div>
+    
+   <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('toggle-dark');
+    const body = document.body;
+
+    
+    if (localStorage.getItem('modo') === 'dark') {
+        body.classList.add('dark-mode');
+    }
+
+    
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            
+            body.classList.toggle('dark-mode');
+            
+            
+            const modo = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            
+            
+            localStorage.setItem('modo', modo);
+            
+            
+            document.cookie = "modo=" + modo + "; path=/; SameSite=Lax";
+        });
+    }
+});
+</script>
 </body>
 </html>

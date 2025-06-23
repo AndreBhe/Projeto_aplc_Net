@@ -30,28 +30,31 @@ include '../includes/verificar_sessao.php';
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Encontra o botão que alterna o tema (ele deve ter o id="toggle-dark")
     const toggle = document.getElementById('toggle-dark');
     const body = document.body;
 
+    // Esta parte garante que, mesmo que o cookie não seja lido a tempo,
+    // o localStorage (memória do navegador) aplique o modo escuro.
     if (localStorage.getItem('modo') === 'dark') {
         body.classList.add('dark-mode');
-        document.cookie = "modo=dark; path=/";
     }
 
+    // Adiciona o evento de clique ao botão, se ele existir na página
     if (toggle) {
         toggle.addEventListener('click', function () {
+            // Adiciona ou remove a classe 'dark-mode' do corpo da página
             body.classList.toggle('dark-mode');
+            
+            // Verifica se o modo escuro está ativo ou não para salvar a escolha
             const modo = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            
+            // Salva a escolha no localStorage para uma troca mais rápida
             localStorage.setItem('modo', modo);
-            document.cookie = "modo=" + modo + "; path=/";
+            
+            // Salva a escolha em um cookie para que o PHP possa ler no próximo carregamento de página
+            document.cookie = "modo=" + modo + "; path=/; SameSite=Lax";
         });
-    }
-});
-
-// Força recarregamento ao voltar do histórico (resolve o problema de logout/sessão no modo claro)
-window.addEventListener('pageshow', function(event) {
-    if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
-        window.location.reload();
     }
 });
 </script>
