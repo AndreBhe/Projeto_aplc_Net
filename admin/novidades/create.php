@@ -46,33 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('toggle-dark');
-    const body = document.body;
-
-    
-    if (localStorage.getItem('modo') === 'dark') {
-        body.classList.add('dark-mode');
-    }
-
-    
-    if (toggle) {
-        toggle.addEventListener('click', function () {
-            // Adiciona ou remove a classe 'dark-mode' do corpo da página
-            body.classList.toggle('dark-mode');
-            
-            // Verifica se o modo escuro está ativo ou não para salvar a escolha
-            const modo = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            
-            // Salva a escolha no localStorage para uma troca mais rápida
-            localStorage.setItem('modo', modo);
-            
-            // Salva a escolha em um cookie para que o PHP possa ler no próximo carregamento de página
-            document.cookie = "modo=" + modo + "; path=/; SameSite=Lax";
-        });
-    }
-});
-</script>
+  
 </body>
 </html>
