@@ -25,7 +25,7 @@
       <div class="row">
         <div class="col-md-6">
           <h2>Quem Somos</h2>
-          <p>Somos uma empresa dedicada a oferecer os melhores produtos e serviços aos nossos clientes. Com uma equipe especializada e apaixonada pelo que faz, buscamos sempre a excelência em cada projeto.</p>
+          <p>Na Cervejaria Brew Lab, somos mais do que produtores de cerveja — somos quatro amigos unidos por um sonho e uma paixão em comum: transformar a arte cervejeira em uma experiência autêntica. Fundada em meio às montanhas do Rio de Janeiro, nossa cervejaria une o frescor da natureza à tradição belga, criando rótulos únicos e cheios de personalidade. Nossa missão é oferecer sabores que contam histórias, cultivando a excelência em cada etapa do processo, desde a água cristalina da serra até os lúpulos importados diretamente da Bélgica.</p>
         </div>
         <div class="col-md-6">
    
@@ -36,7 +36,7 @@
     <section class="text-section">
       <div class="container text-center">
         <h2>Nossos Valores</h2>
-        <p>Compromisso, inovação, ética e qualidade.</p>
+        <p>Nosso compromisso é com a qualidade, a transparência e a conexão humana. Acreditamos que cada cerveja carrega um pedaço de quem somos: ingredientes bem escolhidos, respeito à tradição, inovação constante e um toque de amizade verdadeira. Valorizamos o trabalho artesanal, o cuidado com o meio ambiente e a experiência do cliente — afinal, cada detalhe importa quando o objetivo é surpreender com sabor e autenticidade.</p>
       </div>
     </section>
   </main>
